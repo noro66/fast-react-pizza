@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import Button from "../../ui/Button";
 import LinkButton from "../../ui/LinkButton";
 import CartItem from "./CartItem";
+import store from "../../store";
+import { getCart } from "./cartSlice";
 
 const fakeCart = [
   {
@@ -28,8 +30,10 @@ const fakeCart = [
 ];
 
 function Cart() {
-  const cart = fakeCart;
+  // const cart = fakeCart;
   const username = useSelector((store) => store.user.username);
+  const cart = useSelector(getCart);
+  
   return (
     <div className="px-4 py-3">
       <LinkButton to={"/menu"}>&larr; Back to menu</LinkButton>
