@@ -7,13 +7,15 @@ function UpdateOrther({ order }) {
 
   return (
     <fetcher.Form method="PATCH" className="text-right">
-      <Button type="primary">Make priority</Button>
+      <Button disabled={fetcher.state === "loading"} type="primary">
+        Make priority
+      </Button>
     </fetcher.Form>
   );
 }
 
 export async function action({ request, params }) {
-  const data = {priority : true};
+  const data = { priority: true };
   await updateOrder(params.orderId, data);
   return null;
 }
